@@ -11,6 +11,6 @@ namespace HXF.WebServices.Server
         public bool ReturnInternalErrors { get; set; }
         public int Latency { get; set; }
         public bool SupportCors { get; set; }
-        public ServiceConfig ServiceConfiguration { get; set; }
+        public ServiceConfig ServiceConfig { get; set; }
     }
 }

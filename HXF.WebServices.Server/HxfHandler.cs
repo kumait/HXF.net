@@ -20,7 +20,7 @@ namespace HXF.WebServices.Server
         private const string METHOD = "method";
         private const string PARAMETERS = "parameters";
 
-        protected RuntimeConfig runtimeConfiguration;
+        protected RuntimeConfig runtimeConfig;
 
         public bool IsReusable
         {
@@ -29,22 +29,22 @@ namespace HXF.WebServices.Server
 
         public HxfHandler()
         {
-            this.runtimeConfiguration = new RuntimeConfig();
-            this.runtimeConfiguration.Latency = 0;
-            this.runtimeConfiguration.ReturnInternalErrors = false;
-            this.runtimeConfiguration.ServiceConfiguration = null;
+            this.runtimeConfig = new RuntimeConfig();
+            this.runtimeConfig.Latency = 0;
+            this.runtimeConfig.ReturnInternalErrors = false;
+            this.runtimeConfig.ServiceConfig = null;
         }
 
         public void ProcessRequest(HttpContext context)
         {
-            if (runtimeConfiguration.Latency > 0)
+            if (runtimeConfig.Latency > 0)
             {
-                Thread.Sleep(runtimeConfiguration.Latency);
+                Thread.Sleep(runtimeConfig.Latency);
             }
 
             context.Response.Charset = "utf-8";
             context.Response.ContentEncoding = Encoding.GetEncoding("utf-8");
-            if (this.runtimeConfiguration.SupportCors)
+            if (this.runtimeConfig.SupportCors)
             {
                 context.Response.AddHeader("Access-Control-Allow-Origin", "*");
             }
@@ -83,10 +83,10 @@ namespace HXF.WebServices.Server
 
         private Service createService()
         {
-            Service svc = new Service(runtimeConfiguration.ServiceConfiguration.Name);
-            svc.Description = runtimeConfiguration.ServiceConfiguration.Description;
+            Service svc = new Service(runtimeConfig.ServiceConfig.Name);
+            svc.Description = runtimeConfig.ServiceConfig.Description;
             svc.Interfaces = new List<Interface>();
-            foreach (InterfaceConfiguration iconf in runtimeConfiguration.ServiceConfiguration.InterfaceConfigs)
+            foreach (InterfaceConfiguration iconf in runtimeConfig.ServiceConfig.InterfaceConfigs)
             {
                 Interface intr = InterfaceBuilder.BuildFromInterfaceType(iconf.RuntimeInfo.InterfaceType);
                 intr.Name = iconf.Name;
@@ -219,7 +219,7 @@ namespace HXF.WebServices.Server
             string methodName = (string)jobject[METHOD];
             JObject parameters = (JObject)jobject[PARAMETERS];
 
-            InterfaceConfiguration interfaceConfig = this.runtimeConfiguration.ServiceConfiguration.GetInterfaceConfiguration(interfaceName);
+            InterfaceConfiguration interfaceConfig = this.runtimeConfig.ServiceConfig.GetInterfaceConfiguration(interfaceName);
 
             if (interfaceConfig == null)
             {

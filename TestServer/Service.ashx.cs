@@ -14,10 +14,9 @@ namespace TestServer
     {
         public Service()
         {
-            ServiceConfig sconf = new ServiceConfig("Test");
+            ServiceConfig sconf = new ServiceConfig("sample", "Sample HXF Service");
             sconf.AddInterfaceConfig("test", "test service", typeof(ISampleService), typeof(SampleService));
-            this.runtimeConfiguration.ServiceConfiguration = sconf;
+            this.runtimeConfig.ServiceConfig = sconf;
         }
-        
     }
 }

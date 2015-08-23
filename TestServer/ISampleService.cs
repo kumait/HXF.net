@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace TestServer
 {
-    interface ISampleService
+    public interface ISampleService
     {
         string SayHello(string name);
+        int Sum(int x, int y);
     }
 }
