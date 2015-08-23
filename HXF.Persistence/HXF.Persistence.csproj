@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5951E5F1-31C4-46C8-8F87-5DE9B21712E1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HXF.Persistence</RootNamespace>
+    <AssemblyName>HXF.Persistence</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExtraAssemblies\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExtraAssemblies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Conf\CustomSqlConf.cs" />
+    <Compile Include="Conf\MySqlDefaultConf.cs" />
+    <Compile Include="ConnectionTester.cs" />
+    <Compile Include="DatabaseExplorer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Descriptors\Catalog.cs" />
+    <Compile Include="Descriptors\CheckConstraint.cs" />
+    <Compile Include="Descriptors\Column.cs" />
+    <Compile Include="ConnectionInfo.cs" />
+    <Compile Include="ConnectionType.cs" />
+    <Compile Include="Descriptors\DataType.cs" />
+    <Compile Include="Descriptors\DataTypeGroup.cs" />
+    <Compile Include="Descriptors\Entity.cs" />
+    <Compile Include="Descriptors\ForeignKeyConstraint.cs" />
+    <Compile Include="Descriptors\PrimaryKeyConstraint.cs" />
+    <Compile Include="Descriptors\Schema.cs" />
+    <Compile Include="Descriptors\TableConstraint.cs" />
+    <Compile Include="Descriptors\ConstraintType.cs" />
+    <Compile Include="Descriptors\Table.cs" />
+    <Compile Include="Descriptors\EntityType.cs" />
+    <Compile Include="Descriptors\Parameter.cs" />
+    <Compile Include="Descriptors\StoredProcedure.cs" />
+    <Compile Include="Descriptors\UniqueConstraint.cs" />
+    <Compile Include="Descriptors\View.cs" />
+    <Compile Include="Generators\DataAccess\CSharpDataAccessGenerator.cs" />
+    <Compile Include="Generators\DataAccess\DataAccessGenerator.cs" />
+    <Compile Include="Generators\DataAccess\GeneratorOptions.cs" />
+    <Compile Include="Generators\DataAccess\IDataAccessGenerator.cs" />
+    <Compile Include="Generators\Sql\CrudGenerator.cs" />
+    <Compile Include="Generators\Sql\ICrudGenerator.cs" />
+    <Compile Include="Generators\Sql\IDatabaseGenerator.cs" />
+    <Compile Include="Generators\Sql\ISqlGenerator.cs" />
+    <Compile Include="Generators\Sql\MySqlCrudGenerator.cs" />
+    <Compile Include="Generators\Sql\DatabaseGenerator.cs" />
+    <Compile Include="Generators\Sql\MySqlDatabaseGenerator.cs" />
+    <Compile Include="Generators\Sql\SqlServerCrudGenerator.cs" />
+    <Compile Include="Generators\Sql\SqlServerDatabaseGenerator.cs" />
+    <Compile Include="Generators\TypeMap.cs" />
+    <Compile Include="Conf\ISqlConf.cs" />
+    <Compile Include="IConnectionFactory.cs" />
+    <Compile Include="IDatabaseExplorer.cs" />
+    <Compile Include="MySqlConnectionFactory.cs" />
+    <Compile Include="Naming\INamingAdapter.cs" />
+    <Compile Include="Naming\CSNamingAdapter.cs" />
+    <Compile Include="Naming\SameNamingAdapter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Conf\SQLConf.cs" />
+    <Compile Include="Conf\SQLServerDefaultConf.cs" />
+    <Compile Include="ReaderUtils.cs" />
+    <Compile Include="ResourceManager.cs" />
+    <Compile Include="SchemaBuilder.cs" />
+    <Compile Include="SqlServerConnectionFactory.cs" />
+    <Compile Include="Conf\Statement.cs" />
+    <Compile Include="Generators\TypeMapRule.cs" />
+    <Compile Include="DatabaseContext.cs" />
+    <Compile Include="StoredProcResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\mysql.xml" />
+    <EmbeddedResource Include="Res\sqlserver.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\tm\db\mysql-sqlserver.typemap" />
+    <EmbeddedResource Include="Res\tm\db\sqlserver-mysql.typemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Res\sqlservertypes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\tm\dal\sqlserver_csharp.typemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\tm\dal\mysql_csharp.typemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HXF.Common\HXF.Common.csproj">
+      <Project>{f5371fc6-18cd-41d3-827e-f2d3a326d8d7}</Project>
+      <Name>HXF.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

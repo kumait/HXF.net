@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<statements>
+  <statement>
+    <id>
+      GET_SCHEMAS
+    </id>
+    <content>
+      SELECT CATALOG_NAME CatalogName, SCHEMA_NAME Name
+      FROM INFORMATION_SCHEMA.SCHEMATA
+      ORDER BY Name;
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      GET_TABLES
+    </id>
+    <content>
+      SELECT TABLE_NAME Name
+      FROM INFORMATION_SCHEMA.TABLES
+      WHERE TABLE_SCHEMA = '{0}'
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      __GET_TABLE_COLUMNS
+    </id>
+    <content>
+      SELECT
+      COLUMN_NAME Name,
+      ORDINAL_POSITION Position,
+      DATA_TYPE DataType,
+      CASE IS_NULLABLE
+      WHEN 'YES' THEN true
+      WHEN 'NO' THEN false
+      END
+      AS
+      IsNullable,
+      CASE EXTRA
+      WHEN 'auto_increment' THEN true
+      ELSE false
+      END
+      AS IsAutoIncremented,
+      false AS IsComputed
+
+      FROM INFORMATION_SCHEMA.COLUMNS COL
+      WHERE COL.TABLE_SCHEMA = '{0}' AND COL.TABLE_NAME = '{1}';
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      GET_TABLE_COLUMNS
+    </id>
+    <content>
+      SELECT
+      COLUMN_NAME Name,
+      ORDINAL_POSITION Position,
+      DATA_TYPE DataType,
+      CASE DATA_TYPE
+      WHEN 'decimal' THEN NUMERIC_PRECISION
+      WHEN 'numeric' THEN NUMERIC_PRECISION
+      WHEN 'binary' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'varbinary' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'char' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'varchar' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'nchar' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'nvarchar' THEN CHARACTER_MAXIMUM_LENGTH
+      ELSE
+      NULL
+      END AS `Precision`,
+      CASE DATA_TYPE
+      WHEN 'decimal' THEN NUMERIC_SCALE
+      WHEN 'numeric' THEN NUMERIC_SCALE
+      ELSE
+      NULL
+      END AS `Scale`,
+      IF (IS_NULLABLE = 'YES', TRUE, FALSE) AS IsNullable,
+      IF (EXTRA = 'auto_increment', TRUE, FALSE) AS IsAutoIncremented,
+      FALSE AS IsComputed
+      FROM INFORMATION_SCHEMA.COLUMNS COL
+      WHERE COL.TABLE_SCHEMA = '{0}' AND COL.TABLE_NAME = '{1}'
+      ORDER BY ORDINAL_POSITION
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      GET_TABLE_CONSTRAINTS
+    </id>
+    <content>
+      SELECT CONSTRAINT_NAME Name, CONSTRAINT_TYPE Type
+      FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+      WHERE CONSTRAINT_SCHEMA = '{0}' AND TABLE_NAME = '{1}'
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      GET_CONSTRAINT_COLUMNS
+    </id>
+    <content>
+      SELECT COLUMN_NAME ColumnName
+      FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+      WHERE CONSTRAINT_SCHEMA = '{0}' AND TABLE_NAME = '{1}' AND CONSTRAINT_NAME = '{2}'
+      ORDER BY ORDINAL_POSITION
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      GET_FK_CONSTRAINT
+    </id>
+    <content>
+      SELECT R.UNIQUE_CONSTRAINT_NAME UniqueConstraint, R.UPDATE_RULE UpdateRule, R.DELETE_RULE DeleteRule, K.TABLE_NAME ReferencedTable
+      FROM INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS R
+      INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE K
+      ON R.UNIQUE_CONSTRAINT_NAME = K.CONSTRAINT_NAME AND R.REFERENCED_TABLE_NAME = K.TABLE_NAME
+      WHERE R.CONSTRAINT_SCHEMA = '{0}' AND R.TABLE_NAME = '{1}' AND R.CONSTRAINT_NAME = '{2}'
+      LIMIT 1
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      __GET_FK_CONSTRAINT
+    </id>
+    <content>
+      SELECT UniqueConstraintName, RefTableName, RefColumnName, UpdateRule, DeleteRule
+      FROM
+      (
+      SELECT
+      T1.UNIQUE_CONSTRAINT_NAME UniqueConstraintName,
+      T1.CONSTRAINT_SCHEMA ConstraintSchema,
+      T1.constraint_name ConstraintName,
+      T2.COLUMN_NAME ColumnName,
+      T2.TABLE_NAME TableName,
+      T2.ORDINAL_POSITION OrdinalPosition,
+      T3.TABLE_NAME RefTableName,
+      T3.COLUMN_NAME RefColumnName,
+      T1.MATCH_OPTION MatchOption,
+      T1.UPDATE_RULE UpdateRule,
+      T1.DELETE_RULE DeleteRule
+      FROM
+      INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS T1
+      INNER JOIN
+      INFORMATION_SCHEMA.KEY_COLUMN_USAGE T2
+      ON T1.CONSTRAINT_NAME = T2.CONSTRAINT_NAME
+      INNER JOIN
+      INFORMATION_SCHEMA.KEY_COLUMN_USAGE T3
+      ON T1.UNIQUE_CONSTRAINT_NAME = T3.CONSTRAINT_NAME
+      AND T2.ORDINAL_POSITION = T3.ORDINAL_POSITION
+      ) A
+      WHERE A.ConstraintSchema = '{0}' AND A.TableName = '{1}' AND A.ConstraintName = '{2}'
+      ORDER BY OrdinalPosition;
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      GET_STORED_PROCEDURES
+    </id>
+    <content>
+      SELECT ROUTINE_NAME Name, ROUTINE_DEFINITION Definition
+      FROM INFORMATION_SCHEMA.ROUTINES
+      WHERE ROUTINE_TYPE = 'PROCEDURE' AND ROUTINE_SCHEMA = '{0}';
+    </content>
+  </statement>
+
+  <statement>
+    <id>
+      GET_STORED_PROCEDURE_PARAMETERS
+    </id>
+    <content>
+      SELECT
+      PARAMETER_NAME Name,
+      ORDINAL_POSITION Position,
+      DATA_TYPE DataType,
+      CASE DATA_TYPE
+      WHEN 'decimal' THEN NUMERIC_PRECISION
+      WHEN 'numeric' THEN NUMERIC_PRECISION
+      WHEN 'binary' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'varbinary' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'char' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'varchar' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'nchar' THEN CHARACTER_MAXIMUM_LENGTH
+      WHEN 'nvarchar' THEN CHARACTER_MAXIMUM_LENGTH
+      ELSE
+      NULL
+      END AS `Precision`,
+      CASE DATA_TYPE
+      WHEN 'decimal' THEN NUMERIC_SCALE
+      WHEN 'numeric' THEN NUMERIC_SCALE
+      ELSE
+      NULL
+      END AS `Scale`,
+      PARAMETER_MODE Mode
+      FROM INFORMATION_SCHEMA.PARAMETERS
+      WHERE SPECIFIC_SCHEMA = '{0}' AND SPECIFIC_NAME = '{1}'
+      ORDER BY ORDINAL_POSITION
+    </content>
+  </statement>
+</statements>

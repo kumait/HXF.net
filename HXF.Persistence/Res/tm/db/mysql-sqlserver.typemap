@@ -1,0 +1,27 @@
+﻿{
+	'name': 'MySql -> Sql Server Standard Type Map',
+	'description': '',
+	'source_platform': 'MYSQL',
+	'target_platform': 'SQLSERVER',
+	'rules':
+	[
+		['mediumint', '*', '*', 'int', '', ''],
+		['float', '*', '*', 'float', '', ''],
+		['double', '*', '*', 'float', 53, ''],
+		['datetime', '*', '*', 'datetime2', '', ''],
+		['timestamp', '*', '*', 'smalldatetime', '', ''],
+		['year', '*', '*', 'smallint', '', ''],
+		['char', '*', '*', 'nchar', '=', ''],
+		['varchar', '*', '*', 'nvarchar', '=', ''],
+		['tinytext', '*', '*', 'nvarchar', '255', ''],
+		['text', '*', '*', 'nvarchar', '-1', ''],
+		['mediumtext', '*', '*', 'nvarchar', '-1', ''],
+		['longtext', '*', '*', 'nvarchar', '-1', ''],
+		['tinyblob', '*', '*', 'varbinary', '255', ''],
+		['blob', '*', '*', 'varbinary', '-1', ''],
+		['mediumblob', '*', '*', 'varbinary', '-1', ''],
+		['longblob', '*', '*', 'varbinary', '-1', ''],
+		['set', '*', '*', 'nvarchar', 100, ''],
+		['enum', '*', '*', 'nvarchar', 100, '']
+	]
+}

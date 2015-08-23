@@ -1,0 +1,27 @@
+﻿{
+	'name': 'DOTNET -> FLEX Standard Type Map',
+	'description': '',
+	'source_platform': 'DOTNET',
+	'target_platform': 'FLEX',
+	'rules':
+	[
+		['Void', 'void'],
+		['Object', 'Object'],
+		['List', 'object[]'],
+		['List<>', 'List'],
+		['Boolean', 'Boolean'],
+		['Char', 'uint'],
+		['SByte', 'int'],
+		['Byte', 'uint'],
+		['Int16', 'int'],
+		['Uint16', 'uint'],
+		['Int32', 'int'],
+		['Uint32', 'uint'],
+		['Int64', 'Number'],
+		['Uint64', 'Number'],
+		['Single', 'float'],
+		['Double', 'Number'],
+		['Decimal', 'Number'],
+		['String', 'String']
+	]
+}

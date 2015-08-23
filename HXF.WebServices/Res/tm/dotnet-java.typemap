@@ -1,0 +1,27 @@
+﻿{
+	'name': 'DOTNET -> JAVA Standard Type Map',
+	'description': '',
+	'source_platform': 'DOTNET',
+	'target_platform': 'JAVA',
+	'rules':
+	[
+		['Void', 'void'],
+		['Object', 'Object'],
+		['List', 'Object[]'],
+		['List<>', 'ArrayList'],
+		['Boolean', 'boolean'],
+		['Char', 'char'],
+		['SByte', 'int'],
+		['Byte', 'byte'],
+		['Int16', 'int'],
+		['Uint16', 'int'],
+		['Int32', 'int'],
+		['Uint32', 'int'],
+		['Int64', 'long'],
+		['Uint64', 'long'],
+		['Single', 'float'],
+		['Double', 'double'],
+		['Decimal', 'double'],
+		['String', 'String']
+	]
+}

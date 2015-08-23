@@ -1,0 +1,22 @@
+﻿{
+	'name': 'Sql Server -> MySql Standard Type Map',
+	'description': '',
+	'source_platform': 'SQLSERVER',
+	'target_platform': 'MYSQL',
+	'rules':
+	[
+		['money','*', '*', 'decimal', '19', '4'],
+		['smallmoney', '*', '*', 'decimal', '10', '4'],
+		['real', '*', '*', 'float', '=', '='],
+		['ntext', '*', '*', 'text', '=', '='],
+		['smalldatetime', '*', '*', 'datetime', '=', '='],
+		['datetime2', '*', '*', 'datetime', null, null],
+		['datetimeoffset', '*', '*', 'datetime' , null, null],
+		['time', '*', '*', 'time', null, null],
+		['image', '*', '*', 'longblob', null, null],
+		['varchar', '-1', '*', 'varchar', '65535', null],
+		['varbinary', '-1', '*', 'varbinary', 65535, null],
+		['binary', '*', '*', 'blob', '', ''],
+		['varbinary', '*', '*', 'blob', '', '']
+	]
+}

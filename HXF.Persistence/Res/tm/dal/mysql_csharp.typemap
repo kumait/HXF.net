@@ -1,0 +1,44 @@
+﻿{
+	'name': 'MySql -> C# Standard Type Map',
+	'description': '',
+	'source_platform': 'MYSQL',
+	'target_platform': 'C#',
+	'rules':
+	[
+		['tinyint', '*', '*', 'byte?', '', ''],
+		['smallint', '*', '*', 'short?', '', ''],
+		['year', '*', '*', 'short?', '', ''],
+		['int', '*', '*', 'int?', '', ''],
+		['mediumint', '*', '*', 'int?', '', ''],
+		['bigint', '*', '*', 'long?', '', ''],
+		['decimal', '*', '*', 'decimal?', '', ''],
+		['numeric', '*', '*', 'decimal?', '', ''],
+		['float', '*', '*', 'Single?', '', ''],
+		['real', '*', '*', 'double?', '', ''],
+		['double', '*', '*', 'double?', '', ''],
+		['bit', '*', '*', 'bool?', '', ''],
+
+		['char', '*', '*', 'string', '', ''],
+		['varchar', '*', '*', 'string', '', ''],
+		['tinytext', '*', '*', 'string', '', ''],
+		['text', '*', '*', 'string', '', ''],
+		['mediumtext', '*', '*', 'string', '', ''],
+		['longtext', '*', '*', 'string', '', ''],
+		['set', '*', '*', 'string', '', ''],
+		['enum', '*', '*', 'string', '', ''],
+		['nchar', '*', '*', 'string', '', ''],
+		['nvarchar', '*', '*', 'string', '', ''],
+
+		['date', '*', '*', 'DateTime', '', ''],
+		['timestamp', '*', '*', 'DateTime', '', ''],
+		['datetime', '*', '*', 'DateTime', '', ''],
+		['time', '*', '*', 'TimeSpan', '', ''],
+
+		['binary', '*', '*', 'byte[]', '', ''],
+		['varbinary', '*', '*', 'byte[]', '', ''],
+		['tinyblob', '*', '*', 'byte[]', '', ''],
+		['mediumblob', '*', '*', 'byte[]', '', ''],
+		['blob', '*', '*', 'byte[]', '', ''],
+		['longblob', '*', '*', 'byte[]', '', ''],
+	]
+}

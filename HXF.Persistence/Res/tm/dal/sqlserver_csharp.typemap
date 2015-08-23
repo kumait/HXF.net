@@ -1,0 +1,42 @@
+﻿{
+	'name': 'SqlServer -> C# Standard Type Map',
+	'description': '',
+	'source_platform': 'SQLSERVER',
+	'target_platform': 'C#',
+	'rules':
+	[
+		['tinyint', '*', '*', 'byte?', '', ''],
+		['smallint', '*', '*', 'short?', '', ''],
+		['int', '*', '*', 'int?', '', ''],
+		['bigint', '*', '*', 'long?', '', ''],
+		['decimal', '*', '*', 'decimal?', '', ''],
+		['numeric', '*', '*', 'decimal?', '', ''],
+		['float', '*', '*', 'double?', '', ''],
+		['real', '*', '*', 'Single', '', ''],
+		['money', '*', '*', 'decimal?', '', ''],
+		['smallmoney', '*', '*', 'decimal?', '', ''],
+		['bit', '*', '*', 'bool?', '', ''],
+
+		['char', '*', '*', 'string', '', ''],
+		['varchar', '*', '*', 'string', '', ''],
+		['nchar', '*', '*', 'string', '', ''],
+		['nvarchar', '*', '*', 'string', '', ''],
+		['text', '*', '*', 'string', '', ''],
+		['ntext', '*', '*', 'string', '', ''],
+		['xml', '*', '*', 'string', '', ''],
+
+		['date', '*', '*', 'DateTime?', '', ''],
+		['datetimeoffset', '*', '*', 'DateTimeOffset?', '', ''],
+		['datetime2', '*', '*', 'DateTime?', '', ''],
+		['smalldatetime', '*', '*', 'DateTime?', '', ''],
+		['datetime', '*', '*', 'DateTime?', '', ''],
+		['time', '*', '*', 'TimeSpan?', '', ''],
+		['timestamp', '*', '*', 'DateTime?', '', ''],
+
+		['binary', '*', '*', 'byte[]', '', ''],
+		['varbinary', '*', '*', 'byte[]', '', ''],
+		['image', '*', '*', 'byte[]', '', ''],
+
+		['uniqueidentifier', '*', '*', 'Guid', '', ''],
+	]
+}

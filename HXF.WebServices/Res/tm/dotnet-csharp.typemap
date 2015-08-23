@@ -1,0 +1,28 @@
+﻿{
+	'name': 'DOTNET -> CSHARP Standard Type Map',
+	'description': '',
+	'source_platform': 'DOTNET',
+	'target_platform': 'C#',
+	'rules':
+	[
+		['Void', 'void'],
+		['Object', 'object'],
+		['List', 'object[]'],
+		['List<>', 'List'],
+		['Boolean', 'bool'],
+		['Char', 'char'],
+		['SByte', 'sbyte'],
+		['Byte', 'byte'],
+		['Int16', 'int'],
+		['Uint16', 'ushort'],
+		['Int32', 'int'],
+		['Uint32', 'uint'],
+		['Int64', 'long'],
+		['Uint64', 'ulong'],
+		['Single', 'float'],
+		['Double', 'double'],
+		['Decimal', 'decimal'],
+		['String', 'string'],
+		['DateTime', 'DateTime']
+	]
+}

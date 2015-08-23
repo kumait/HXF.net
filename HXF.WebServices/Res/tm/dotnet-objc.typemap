@@ -1,0 +1,27 @@
+﻿{
+	'name': 'DOTNET -> OBJC Standard Type Map',
+	'description': '',
+	'source_platform': 'DOTNET',
+	'target_platform': 'OBJC',
+	'rules':
+	[
+		['Void', 'void'],
+		['Object', 'NSDictionary*'],
+		['List', 'NSArray*'],
+		['List<>', 'NSArray*'],
+		['Boolean', 'NSNumber*'],
+		['Char', 'NSNumber*'],
+		['SByte', 'NSNumber*'],
+		['Byte', 'NSNumber*'],
+		['Int16', 'NSNumber*'],
+		['Uint16', 'NSNumber*'],
+		['Int32', 'NSNumber*'],
+		['Uint32', 'NSNumber*'],
+		['Int64', 'NSNumber*'],
+		['Uint64', 'NSNumber*'],
+		['Single', 'NSNumber*'],
+		['Double', 'NSNumber*'],
+		['Decimal', 'NSNumber*'],
+		['String', 'NSString*']
+	]
+}

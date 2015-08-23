@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6805442F-79D7-4533-95FC-A2A35C64638B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HXF.WebServices</RootNamespace>
+    <AssemblyName>HXF.WebServices</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ExtraAssemblies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Descriptors\Method.cs" />
+    <Compile Include="Descriptors\Parameter.cs" />
+    <Compile Include="Generators\AngularGenerator.cs" />
+    <Compile Include="Generators\JavaGenerator.cs" />
+    <Compile Include="Generators\CSharpGenerator.cs" />
+    <Compile Include="Generators\DynamicGenerator.cs" />
+    <Compile Include="Generators\FlexGenerator.cs" />
+    <Compile Include="Generators\IProxyGenerator.cs" />
+    <Compile Include="Generators\JavaScriptDojoAMDGenerator.cs" />
+    <Compile Include="Generators\JavaScriptGenerator.cs" />
+    <Compile Include="Generators\ObjectiveCGenerator.cs" />
+    <Compile Include="InterfaceBuilder.cs" />
+    <Compile Include="InterfaceConfig.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Descriptors\Service.cs" />
+    <Compile Include="Descriptors\Interface.cs" />
+    <Compile Include="ResourceManager.cs" />
+    <Compile Include="RuntimeInfo.cs" />
+    <Compile Include="ServiceConfiguration.cs" />
+    <Compile Include="ServiceBuilder.cs" />
+    <Compile Include="Generators\TypeMap.cs" />
+    <Compile Include="Generators\TypeMapRule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\tm\dotnet-java.typemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\tm\dotnet-csharp.typemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\tm\dotnet-objc.typemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Res\tm\dotnet-flex.typemap" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HXF.Common\HXF.Common.csproj">
+      <Project>{f5371fc6-18cd-41d3-827e-f2d3a326d8d7}</Project>
+      <Name>HXF.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
