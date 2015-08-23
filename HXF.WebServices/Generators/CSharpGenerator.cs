@@ -28,7 +28,6 @@ using Newtonsoft.Json;";
 @"private string Load(string contents)
 {
     HttpWebRequest req = (HttpWebRequest)WebRequest.Create(SERVICE_URL);
-    req.Headers.Add(""Accept-Encoding"", ""gzip, deflate"");
     req.AllowWriteStreamBuffering = true;
     req.Method = ""POST"";
     req.Timeout = 60000;
