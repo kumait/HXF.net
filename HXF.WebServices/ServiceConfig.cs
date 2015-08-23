@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace HXF.WebServices
 {
-    public class ServiceConfiguration
+    public class ServiceConfig
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public List<InterfaceConfiguration> InterfaceConfigs { get; set; }
 
-        public ServiceConfiguration(string name, string description = "")
+        public ServiceConfig(string name, string description = "")
         {
             this.Name = name;
             this.Description = description;
             this.InterfaceConfigs = new List<InterfaceConfiguration>();
         }
 
-        public ServiceConfiguration() : this(null, null) { }
+        public ServiceConfig() : this(null, null) { }
 
         public InterfaceConfiguration GetInterfaceConfiguration(string name)
         {

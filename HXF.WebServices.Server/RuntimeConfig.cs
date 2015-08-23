@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace HXF.WebServices.Server
 {
-    public class RuntimeConfiguration
+    public class RuntimeConfig
     {
         public bool ReturnInternalErrors { get; set; }
         public int Latency { get; set; }
         public bool SupportCors { get; set; }
-        public ServiceConfiguration ServiceConfiguration { get; set; }
+        public ServiceConfig ServiceConfiguration { get; set; }
     }
 }

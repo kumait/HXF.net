@@ -14,22 +14,22 @@ using System.Web;
 
 namespace HXF.WebServices.Server
 {
-    public class WebHandler: IHttpHandler
+    public class HxfHandler: IHttpHandler
     {
         private const string INTERFACE = "interface";
         private const string METHOD = "method";
         private const string PARAMETERS = "parameters";
 
-        protected RuntimeConfiguration runtimeConfiguration;
+        protected RuntimeConfig runtimeConfiguration;
 
         public bool IsReusable
         {
             get { return false; }
         }
 
-        public WebHandler()
+        public HxfHandler()
         {
-            this.runtimeConfiguration = new RuntimeConfiguration();
+            this.runtimeConfiguration = new RuntimeConfig();
             this.runtimeConfiguration.Latency = 0;
             this.runtimeConfiguration.ReturnInternalErrors = false;
             this.runtimeConfiguration.ServiceConfiguration = null;
@@ -76,7 +76,7 @@ namespace HXF.WebServices.Server
             using (Stream stream = assembly.GetManifestResourceStream("HXF.WebServices.Server.Res.default.html"))
             {
                 StreamReader reader = new StreamReader(stream);
-                string pageContent = reader.ReadToEnd();
+                string pageContent = string.Format(reader.ReadToEnd(), Path.GetFileName(context.Request.Url.AbsolutePath));
                 context.Response.Write(pageContent);
             }            
         }

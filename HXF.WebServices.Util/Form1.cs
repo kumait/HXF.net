@@ -35,7 +35,7 @@ namespace HXF.WebServices.Util
             InterfaceConfiguration iconf2 = new InterfaceConfiguration("TestInterface", "Test Interface",
                 new RuntimeInfo(typeof(ITestInterface), typeof(TestInterfaceImpl)));
 
-            ServiceConfiguration sconf = new ServiceConfiguration("hxf_service", "HXF Service");
+            ServiceConfig sconf = new ServiceConfig("hxf_service", "HXF Service");
             sconf.InterfaceConfigs.Add(iconf1);
             sconf.InterfaceConfigs.Add(iconf2);
             

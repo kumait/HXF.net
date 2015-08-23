@@ -47,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RuntimeConfiguration.cs" />
+    <Compile Include="RuntimeConfig.cs" />
     <Compile Include="ServiceResult.cs" />
-    <Compile Include="WebHandler.cs" />
+    <Compile Include="HxfHandler.cs" />
     <Compile Include="ZipExporter.cs" />
   </ItemGroup>
   <ItemGroup>

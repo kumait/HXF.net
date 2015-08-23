@@ -9,7 +9,7 @@ namespace HXF.WebServices
 {
     public class ServiceBuilder
     {
-        public static Service BuildFromServiceConf(ServiceConfiguration serviceConf) {
+        public static Service BuildFromServiceConf(ServiceConfig serviceConf) {
             Service svc = new Service(serviceConf.Name);
             svc.Description = serviceConf.Description;
             svc.Interfaces = new List<Interface>();
