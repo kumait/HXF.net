@@ -17,4 +17,4 @@ Simplicity does not mean that developers will sacrifice features when using HXF,
 
 Portability is the second design factor that was taken into consideration. While simplicity ensures reliability, it is also easier to build portable designs when the used standards are easy to be implemented, based on this, HXF-WS web services can easily be consumed from a wide range of clients and HXF-P currently supports SQL Server and MySQL RDBMSs with the possibility to add more easily.  
 
-For more information about HXF please refer to Wiki page.
+For more information about HXF please refer to [Wiki page](https://github.com/kumait/HXF.net/wiki).
