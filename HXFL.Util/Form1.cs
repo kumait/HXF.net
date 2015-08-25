@@ -203,7 +203,7 @@ namespace HXF.Util
 
         private void btnUpdateDatabase_Click(object sender, EventArgs e)
         {
-            updateDatabase();
+            updateDalFiles();
         }
 
         private void btnUpdateAll_Click(object sender, EventArgs e)
